@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AvanadeTarefasApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc39084fa2de2222555ddf91ab558bc9973d8da1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+008702b7cae83d4ff995751d27a900f4d5511e13")]
 [assembly: System.Reflection.AssemblyProductAttribute("AvanadeTarefasApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AvanadeTarefasApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,21 @@
+<form (submit)="salvarTarefa($event)">
+  <div class="form-group">
+    <label for="titulo">Título</label>
+    <input id="titulo" [(ngModel)]="novaTarefa.titulo" name="titulo" required />
+  </div>
+
+  <div class="form-group">
+    <label for="descricao">Descrição</label>
+    <textarea id="descricao" [(ngModel)]="novaTarefa.descricao" name="descricao" required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>
+      <!-- ✅ corrigido: name="status" -->
+      <input type="checkbox" [(ngModel)]="novaTarefa.status" name="status" />
+      Concluída
+    </label>
+  </div>
+
+  <button type="submit" class="btn-primary">Salvar</button>
+</form>

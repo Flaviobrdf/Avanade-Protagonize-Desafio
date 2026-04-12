@@ -1,0 +1,55 @@
+<div class="top-bar">
+  <button class="btn-primary" (click)="abrirModal()">+ Nova Tarefa</button>
+  <h1 class="app-title">Minhas Tarefas</h1>
+  <input 
+    type="text" 
+    placeholder="Pesquisar tarefa..." 
+    [(ngModel)]="termoPesquisa" 
+    (input)="filtrar()" 
+    class="search-bar"
+  />
+</div>
+
+<div class="tasks-wrapper">
+  <div class="tasks-card">
+    <ul class="task-list">
+      <li *ngFor="let tarefa of tarefasFiltradas" [class.concluida]="tarefa.status">
+        <h3>{{ tarefa.titulo }}</h3>
+        <hr>
+        <p>{{ tarefa.descricao }}</p>
+        <hr>
+        <small>Criada em: {{ tarefa.dataCriacao | date:'short' }}</small>
+        <hr>
+        <span>Status: {{ tarefa.status ? 'Concluída' : 'Pendente' }}</span>
+        <hr>
+        <button 
+          [ngClass]="tarefa.status ? 'btn-reabrir' : 'btn-concluir'" 
+          (click)="alternarStatus(tarefa)">
+          {{ tarefa.status ? 'Reabrir' : 'Concluir' }}
+        </button>
+        <button class="btn-editar" (click)="editarTarefa(tarefa)">Editar</button>
+        <button class="btn-excluir" (click)="excluirTarefa(tarefa.id)">Excluir</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" *ngIf="mostrarModal">
+  <div class="modal-content">
+    <form (submit)="editando ? salvarEdicao($event) : adicionarTarefa($event)">
+      <div class="form-group">
+        <label for="titulo">Título</label>
+        <input id="titulo" [(ngModel)]="tarefaSelecionada.titulo" name="titulo" required />
+      </div>
+      <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" [(ngModel)]="tarefaSelecionada.descricao" name="descricao" required></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">{{ editando ? 'Salvar' : 'Adicionar' }}</button>
+        <button type="button" class="btn-secondary" (click)="fecharModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
