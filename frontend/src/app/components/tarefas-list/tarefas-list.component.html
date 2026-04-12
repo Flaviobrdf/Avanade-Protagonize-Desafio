@@ -37,17 +37,40 @@
 <!-- Modal -->
 <div class="modal" *ngIf="mostrarModal">
   <div class="modal-content">
+    <h2>{{ editando ? 'Editar Tarefa' : 'Criar Nova Tarefa' }}</h2>
     <form (submit)="editando ? salvarEdicao($event) : adicionarTarefa($event)">
       <div class="form-group">
         <label for="titulo">Título</label>
-        <input id="titulo" [(ngModel)]="tarefaSelecionada.titulo" name="titulo" required />
+        <input 
+          id="titulo" 
+          [(ngModel)]="tarefaSelecionada.titulo" 
+          name="titulo" 
+          required 
+          minlength="3"
+          #titulo="ngModel"
+        />
+        <small *ngIf="titulo.invalid && titulo.touched" class="error">
+          O título é obrigatório e deve ter pelo menos 3 caracteres.
+        </small>
       </div>
       <div class="form-group">
         <label for="descricao">Descrição</label>
-        <textarea id="descricao" [(ngModel)]="tarefaSelecionada.descricao" name="descricao" required></textarea>
+        <textarea 
+          id="descricao" 
+          [(ngModel)]="tarefaSelecionada.descricao" 
+          name="descricao" 
+          required 
+          minlength="5"
+          #descricao="ngModel"
+        ></textarea>
+        <small *ngIf="descricao.invalid && descricao.touched" class="error">
+          A descrição é obrigatória e deve ter pelo menos 5 caracteres.
+        </small>
       </div>
       <div class="modal-actions">
-        <button type="submit" class="btn-primary">{{ editando ? 'Salvar' : 'Adicionar' }}</button>
+        <button type="submit" class="btn-primary" [disabled]="titulo.invalid || descricao.invalid">
+          {{ editando ? 'Salvar' : 'Adicionar' }}
+        </button>
         <button type="button" class="btn-secondary" (click)="fecharModal()">Cancelar</button>
       </div>
     </form>
