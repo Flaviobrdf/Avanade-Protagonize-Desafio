@@ -1,4 +1,5 @@
 Instalar .NET SDK e Visual Studio para abrir o backend:
+
 https://dotnet.microsoft.com/pt-br/download/visual-studio-sdks
 
 Instalar SQL Server:
