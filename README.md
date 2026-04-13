@@ -126,6 +126,10 @@ Para executar o front, bastar estar na pasta Avanade_Tarefas-main\frontend no Vs
     Digitar:
     
         ng serve
+
+        Acessar no navegador o localhost indicado, ex:
+
+        http://localhost:4200/
   
 
 
